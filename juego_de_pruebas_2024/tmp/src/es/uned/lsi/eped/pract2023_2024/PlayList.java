@@ -50,9 +50,21 @@ public class PlayList implements PlayListIF {
 
 public void removeTune(int tuneID) {
     // Itera de atrás hacia adelante para evitar problemas al remover elementos.
+    /* 
     for (int i = playList.size(); i >= 1; i--) {
         if (playList.get(i) == tuneID) {
             playList.remove(i);
+        }
+    }
+    */
+    IteratorIF<Integer> it = playList.iterator();
+    int index = 1;
+    while (it.hasNext()) {
+        Integer current = it.getNext(); 
+        if (current==tuneID) {
+            playList.remove(index);
+        } else {
+            index++;
         }
     }
 }

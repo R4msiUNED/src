@@ -34,10 +34,4 @@ public class Tune implements TuneIF{
         return matchTitle && matchAlbum && matchAuthor && matchGenre && matchMinDur && matchMaxDur && matchMinYear && matchMaxYear;
     }
 
-    @Override
-    public String toString() {
-        return "Tune [title=" + title + ", author=" + author + ", genre=" + genre + ", album=" + album + ", year="
-                + year + ", duration=" + duration + "]";
-    }
-
 }

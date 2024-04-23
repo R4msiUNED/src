@@ -75,11 +75,24 @@ public class PlayListManager implements PlayListManagerIF {
 
     @Override
     public void removePlayList(String playListID) {
-         // Itera de atrás hacia adelante para evitar problemas al remover elementos.
-        for (int i = playListCollection.size(); i >= 1; i--) {
+        /* 
+        for (int i = 1; i <=playListCollection.size(); i++) {
             if (playListCollection.get(i).playListId.equals(playListID)) {
                 playListCollection.remove(i);
+                break;
             }
+        }
+        */
+        IteratorIF<InnerPlayListManager> it = playListCollection.iterator();
+        int index = 1;
+        boolean found = false;
+        while (it.hasNext() && !found) {
+            InnerPlayListManager current = it.getNext(); 
+            if (playListID.equals(current.playListId)) {
+                playListCollection.remove(index);
+                found=true; // No hay repeticiones
+            }
+            index++;
         }
         
     }
